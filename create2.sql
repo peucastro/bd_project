@@ -24,7 +24,7 @@ CREATE TABLE Client (
     email TEXT CONSTRAINT unique_client_email UNIQUE CONSTRAINT not_null_client_email NOT NULL,
     phoneNumber TEXT CONSTRAINT unique_client_phoneNumber UNIQUE CONSTRAINT not_null_client_phoneNumber NOT NULL,
     taxID TEXT CONSTRAINT unique_client_taxID UNIQUE CONSTRAINT not_null_client_taxID NOT NULL,
-    CONSTRAINT valid_client_email CHECK (instr(email, '@') > 1),
+    CONSTRAINT valid_client_email CHECK (email LIKE '%_@_%._%' AND LENGTH(email) - LENGTH(REPLACE(email, '@', '')) = 1),
     CONSTRAINT valid_client_phoneNumber CHECK (phoneNumber LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     CONSTRAINT valid_client_taxID CHECK (taxID LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')
 );
@@ -42,7 +42,7 @@ CREATE TABLE Receptionist (
     email TEXT CONSTRAINT unique_receptionist_email UNIQUE CONSTRAINT not_null_receptionist_email NOT NULL,
     phoneNumber TEXT CONSTRAINT unique_receptionist_phoneNumber UNIQUE CONSTRAINT not_null_receptionist_phoneNumber NOT NULL,
     taxID TEXT CONSTRAINT unique_receptionist_taxID UNIQUE CONSTRAINT not_null_receptionist_taxID NOT NULL,
-    CONSTRAINT valid_receptionist_email CHECK (instr(email, '@') > 1),
+    CONSTRAINT valid_receptionist_email CHECK (email LIKE '%_@_%._%' AND LENGTH(email) - LENGTH(REPLACE(email, '@', '')) = 1),
     CONSTRAINT valid_receptionist_phoneNumber CHECK (phoneNumber LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     CONSTRAINT valid_receptionist_taxID CHECK (taxID LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')
 );
@@ -53,7 +53,7 @@ CREATE TABLE Cleaner (
     email TEXT CONSTRAINT unique_cleaner_email UNIQUE CONSTRAINT not_null_cleaner_email NOT NULL,
     phoneNumber TEXT CONSTRAINT unique_receptionist_phoneNumber UNIQUE CONSTRAINT not_null_receptionist_phoneNumber NOT NULL,
     taxID TEXT CONSTRAINT unique_cleaner_taxID UNIQUE CONSTRAINT not_null_cleaner_taxID NOT NULL,
-    CONSTRAINT valid_cleaner_email CHECK (instr(email, '@') > 1),
+    CONSTRAINT valid_cleaner_email CHECK (email LIKE '%_@_%._%' AND LENGTH(email) - LENGTH(REPLACE(email, '@', '')) = 1),
     CONSTRAINT valid_cleaner_phoneNumber CHECK (phoneNumber LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]'),
     CONSTRAINT valid_cleaner_taxID CHECK (taxID LIKE '[0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9][0-9]')
 );
