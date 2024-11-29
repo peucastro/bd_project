@@ -60,8 +60,8 @@ CREATE TABLE Reservation (
     status TEXT DEFAULT 'Pending' CONSTRAINT not_null_reservation_status NOT NULL,
     client INTEGER CONSTRAINT not_null_reservation_client NOT NULL,
     receptionist INTEGER CONSTRAINT not_null_reservation_receptionist NOT NULL,
-    FOREIGN KEY (client) REFERENCES Client(id) ON DELETE SET NULL ON UPDATE CASCADE,
-    FOREIGN KEY (receptionist) REFERENCES Receptionist(id) ON DELETE SET NULL ON UPDATE CASCADE,
+    FOREIGN KEY (client) REFERENCES Client(id) ON DELETE CASCADE ON UPDATE CASCADE,
+    FOREIGN KEY (receptionist) REFERENCES Receptionist(id) ON DELETE CASCADE ON UPDATE CASCADE,
     CONSTRAINT valid_reservation_dates CHECK (startDate <= endDate),
     CONSTRAINT valid_reservation_status CHECK (status IN ('Reserved', 'Pending', 'Cancelled', 'Confirmed'))
 );
