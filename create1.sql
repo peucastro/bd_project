@@ -124,8 +124,8 @@ CREATE TABLE ReservationService (
 CREATE TABLE ReservationRoom (
     reservation INTEGER CONSTRAINT not_null_reservationRoom_reservation NOT NULL,
     room INTEGER CONSTRAINT not_null_reservationRoom_room NOT NULL,
-    startDate DATE CONSTRAINT not_null_reservationRoom_startDate NOT NULL,
-    CONSTRAINT pk_reservationroom PRIMARY KEY (reservation, room, startDate),
+    reservationDate DATE CONSTRAINT not_null_reservationRoom_startDate NOT NULL,
+    CONSTRAINT pk_reservationroom PRIMARY KEY (reservation, room, reservationDate),
     FOREIGN KEY (reservation) REFERENCES Reservation(id) ON DELETE CASCADE ON UPDATE CASCADE,
     FOREIGN KEY (room) REFERENCES Room(id) ON DELETE CASCADE ON UPDATE CASCADE
 );

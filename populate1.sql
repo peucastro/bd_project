@@ -151,7 +151,7 @@ INSERT INTO Cancellation (id, reason, date, reservation) VALUES
 (2, 'Health Issues', '2024-12-22', 5),
 (3, 'Weather Conditions', '2025-03-17', 3);
 
-INSERT INTO ReservationRoom (reservation, room, startDate) VALUES
+INSERT INTO ReservationRoom (reservation, room, reservationDate) VALUES
 (1, 101, '2024-02-01'),
 (1, 101, '2024-02-02'),
 (1, 101, '2024-02-03'),
